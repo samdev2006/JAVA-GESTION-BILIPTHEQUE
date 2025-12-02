@@ -21,7 +21,7 @@ public class DVD extends Document implements Renouvelable, Reservable {
 
     @Override
     public void afficherDetails() {
-        System.out.println("\n🎬 ===== DVD =====");
+        System.out.println("\n ===== DVD =====");
         System.out.println("Code : " + code);
         System.out.println("Titre : " + titre);
         System.out.println("Réalisateur : " + realisateur);
@@ -44,12 +44,12 @@ public class DVD extends Document implements Renouvelable, Reservable {
     @Override
     public boolean reserver(String nomUtilisateur) {
         if (reservePar != null) {
-            System.out.println("❌ DVD '" + titre + "' déjà réservé par " + reservePar);
+            System.out.println(" DVD '" + titre + "' déjà réservé par " + reservePar);
             return false;
         }
 
         reservePar = nomUtilisateur;
-        System.out.println("✅ DVD '" + titre + "' réservé par " + nomUtilisateur);
+        System.out.println(" DVD '" + titre + "' réservé par " + nomUtilisateur);
         return true;
     }
 
@@ -61,9 +61,9 @@ public class DVD extends Document implements Renouvelable, Reservable {
     @Override
     public void annulerReservation() {
         if (reservePar == null) {
-            System.out.println("❌ Ce DVD n'est pas réservé");
+            System.out.println(" Ce DVD n'est pas réservé");
         } else {
-            System.out.println("✅ Réservation annulée pour '" + titre + "'");
+            System.out.println(" Réservation annulée pour '" + titre + "'");
             reservePar = null;
         }
     }
@@ -90,17 +90,17 @@ public class DVD extends Document implements Renouvelable, Reservable {
         // Vérifier si on peut renouveler
         if (!peutEtreRenouvele()) {
             if (!estEmprunte) {
-                System.out.println("❌ Ce DVD n'est pas emprunté");
+                System.out.println(" Ce DVD n'est pas emprunté");
             } else {
-                System.out.println("❌ Limite de renouvellement atteinte");
+                System.out.println(" Limite de renouvellement atteinte");
             }
             return false;
         }
 
         // Si on peut : incrémenter et afficher
         nombreRenouvellement++;
-        System.out.println("✅ DVD '" + titre + "' renouvelé");
-        System.out.println("📊 Renouvellements : " + nombreRenouvellement + "/" + MAX_RENOUVELLEMENTS);
+        System.out.println(" DVD '" + titre + "' renouvelé");
+        System.out.println(" Renouvellements : " + nombreRenouvellement + "/" + MAX_RENOUVELLEMENTS);
 
         return true;
     }
